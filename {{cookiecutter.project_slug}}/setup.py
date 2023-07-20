@@ -2,7 +2,7 @@
 
 """The setup script."""
 
-#DISTUTILS_DEBUG=True  # set this variable to non-none and detailed info will be printedout when installing.
+# export DISTUTILS_DEBUG=True
 
 from setuptools import setup, find_packages
 
