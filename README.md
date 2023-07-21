@@ -9,5 +9,7 @@ Features:
 - run pytest in parallel
 - continuos testing using pytest-watch plugin
 - full code coverage, including tests suite.
+- wingide remote debugging support.
+
 
 
