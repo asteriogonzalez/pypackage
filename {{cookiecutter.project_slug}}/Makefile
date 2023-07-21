@@ -39,9 +39,6 @@ help:
 
 clean: clean-build clean-pyc clean-test docker-clean ## remove all build, test, coverage and Python artifacts
 
-
-
-
 # ----------------------------------------------------------
 # docker Setup
 # ----------------------------------------------------------
@@ -101,7 +98,7 @@ ptw: ## pytest-watch
 coverage: ## check code coverage quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
 	coverage run --source {{ cookiecutter.project_slug }} -m pytest	
-    coverage run -a --source tests -m pytest
+	coverage run -a --source tests -m pytest
 {%- else %}
 	coverage run --source {{ cookiecutter.project_slug }} setup.py test
 {%- endif %}
@@ -169,8 +166,8 @@ clean-doc: ## remove docs artifacts
 .PHONY: install-testing-requisites
 
 install-testing-requisites: ## install testing requisites
-	@pip install -r requirements/base.txt
-	@pip install -r requirements/testing.txt
+	@pip install -U -r requirements/base.txt
+	@pip install -U -r requirements/testing.txt
 
 # ----------------------------------------------------------
 # Deployment Helpers
