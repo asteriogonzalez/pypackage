@@ -1,4 +1,3 @@
-#########################################################################
 """ wingdbstub.py -- Start debugging Python programs from outside of Wing
 
 Copyright (c) 1999-2018, Archaeopteryx Software, Inc.  All rights reserved.
@@ -6,7 +5,7 @@ Copyright (c) 1999-2018, Archaeopteryx Software, Inc.  All rights reserved.
 Written by Stephan R.A. Deibel and John P. Ehresman
 
 Usage:
------
+---------
 
 This file is used to initiate debug in Python code without launching
 that code from Wing.  To use it, edit the configuration values below,
@@ -20,7 +19,6 @@ Debugging will start immediately after this import statement is reached.
 For details, see Debugging Externally Launched Code in the manual.
 
 """
-#########################################################################
 
 import sys
 

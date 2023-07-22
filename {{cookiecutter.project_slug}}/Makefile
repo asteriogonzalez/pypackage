@@ -133,7 +133,7 @@ SPHINXPROJ    = python-coding-challenge
 SOURCEDIR     = docs
 BUILDDIR      = docs/_build
 AUTODIR       = docs/_autosummary
-PORT          = 8086
+PORT          = 18086
 IGNORE        = "*.log"
 
 # seconds before opening the browser
@@ -141,7 +141,7 @@ AUTODELAY     = 0
 
 # a sleep to avoid too much CPU use while typing documentation
 # and the system is rebuilind too fast
-AUTOOPS       = --pre-build "sleep 1"
+AUTOOPS       = --pre-build "sleep 5"
 
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/{{ cookiecutter.project_slug }}.rst
@@ -151,11 +151,11 @@ docs: ## generate Sphinx HTML documentation, including API docs
 	$(MAKE) -C docs html
 	$(BROWSER) docs/_build/html/index.html
 
-#servedocs: docs ## compile the docs watching for changes
-#	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
+servedocs: docs ## compile the docs watching for changes
+	watchmedo shell-command -p '*.rst' -c '$(MAKE) -C docs html' -R -D .
 
 livehtml:
-	nice sphinx-autobuild -b html $(ALLSPHINXOPTS) --open-browser --port $(PORT) --watch .. --re-ignore "\.git/" $(SOURCEDIR) $(BUILDDIR)/html --ignore $(IGNORE) --delay $(AUTODELAY) $(AUTOOPS)
+	nice -n 20 sphinx-autobuild -b html $(ALLSPHINXOPTS) --open-browser --port $(PORT) --watch . --re-ignore "\.git/" $(SOURCEDIR) $(BUILDDIR)/html --ignore $(IGNORE) --delay $(AUTODELAY) $(AUTOOPS)
 
 clean-doc: ## remove docs artifacts
 	rm -fr docs/_build
