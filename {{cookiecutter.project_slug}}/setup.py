@@ -12,10 +12,10 @@ with open('README.rst') as readme_file:
 with open('HISTORY.rst') as history_file:
     history = history_file.read()
 
-with open('requirements.txt') as requirements_file:
+with open('requirements/base.txt') as requirements_file:
     requirements = requirements_file.readlines()
 
-with open('requirements_dev.txt') as dev_requirements_file:
+with open('requirements/testing.txt') as dev_requirements_file:
     dev_requirements = dev_requirements_file.readlines()
     dev_requirements.extend(requirements)
 
