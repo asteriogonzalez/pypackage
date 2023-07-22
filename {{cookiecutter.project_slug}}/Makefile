@@ -32,7 +32,14 @@ BROWSER := python -c "$$BROWSER_PYSCRIPT"
 help:
 	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
+# ----------------------------------------------------------
+# virtual env
+# ----------------------------------------------------------
+.PHONY: create-venv
 
+create-venv: ## craeate virtual Environment
+	virtualenv venv
+	
 # ----------------------------------------------------------
 # Coding Helpers
 # ----------------------------------------------------------

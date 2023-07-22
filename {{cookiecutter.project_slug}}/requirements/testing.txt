@@ -5,7 +5,10 @@ entrypoints>=0.4
 flake8>=6.0.0
 furo>=2023.5.20
 pip>=23.2
-{% if cookiecutter.use_pytest == 'y' %}pytest>=6.2.4{% endif %}
+{%- if cookiecutter.use_pytest == 'y' %}
+pytest>=6.2.4
+pytest-xdist>=3.3.1
+{% endif -%}
 setuptools>=68.0.0
 Sphinx>=7.0.1
 sphinx-autoapi>=2.1.1
