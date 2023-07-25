@@ -99,7 +99,7 @@ ptw: ## pytest-watch
 # ----------------------------------------------------------
 # Code Quality Helpers
 # ----------------------------------------------------------
-.PHONY: coverage lint lint/flake8
+.PHONY: coverage lint lint/pylint lint/flake8
 {%- if cookiecutter.use_black == 'y' %} lint/black{% endif %}
 
 coverage: ## check code coverage quickly with the default Python
@@ -115,6 +115,9 @@ coverage: ## check code coverage quickly with the default Python
 	coverage html
 	$(BROWSER) htmlcov/index.html
 
+lint/pylint: ## pylint checker
+	pylint {{ cookiecutter.project_slug }} tests
+
 lint/flake8: ## check style with flake8
 	flake8 {{ cookiecutter.project_slug }} tests
 
@@ -123,7 +126,7 @@ lint/black: ## check style with black
 	black --check {{ cookiecutter.project_slug }} tests
 {%- endif %}
 
-lint: lint/flake8{%- if cookiecutter.use_black == 'y' %} lint/black{%- endif %} ## check style
+lint: lint/pylint lint/flake8{%- if cookiecutter.use_black == 'y' %} lint/black{%- endif %} ## check style
 
 # ----------------------------------------------------------
 # Documentation Helpers
