@@ -12,7 +12,7 @@ def _temp_path(prefix="", sufix=""):
 
 @pytest.fixture()
 def temp_path(prefix="", sufix=""):
-    """Returns a ramdom path."""    
+    """Returns a random path."""
     return _temp_path(prefix, sufix)
 
 

@@ -5,9 +5,13 @@ entrypoints>=0.4
 faker>=19.2.0
 flake8>=6.0.0
 furo>=2023.5.20
+mypy
+pyenchant
+pep8
 pip>=23.2
 {%- if cookiecutter.use_pytest == 'y' %}
-pylint>=2.17.4
+#pylint>=2.17.4
+pylint[spelling]
 pytest>=6.2.4
 pytest-xdist>=3.3.1
 {% endif -%}
