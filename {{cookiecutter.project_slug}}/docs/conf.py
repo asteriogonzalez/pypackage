@@ -23,10 +23,10 @@ import sys
 sys.path.insert(0, os.path.abspath('..'))
 
 import {{ cookiecutter.project_slug }} # noqa: E402
-extra_paths = list(cookiecutter.project_slug.__path__)
+extra_paths = list({{ cookiecutter.project_slug}}.__path__)
 
 # add virtual env
-for top in selenium_recipes.__path__:
+for top in {{ cookiecutter.project_slug }}.__path__:
     for root, folers, files in os.walk(os.path.dirname(top)):
         for name in folers:
             if name in ('site-packages',):

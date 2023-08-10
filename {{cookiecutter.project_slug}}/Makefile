@@ -20,7 +20,7 @@ for line in sys.stdin:
 endef
 export PRINT_HELP_PYSCRIPT
 
-BROWSER := python -c "$$BROWSER_PYSCRIPT"
+BROWSER := @python3 -c "$$BROWSER_PYSCRIPT"
 
 
 
@@ -30,7 +30,7 @@ BROWSER := python -c "$$BROWSER_PYSCRIPT"
 .PHONY: help
 
 help:
-	@python -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
+	@python3 -c "$$PRINT_HELP_PYSCRIPT" < $(MAKEFILE_LIST)
 
 # ----------------------------------------------------------
 # virtual env
@@ -73,12 +73,12 @@ test: ## run tests quickly with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
 	pytest
 {%- else %}
-	python setup.py test
+	@python3 setup.py test
 {%- endif %}
 
 test-parallel: ## run parallel pytests with the default Python
 {%- if cookiecutter.use_pytest == 'y' %}
-	pytest -n 5
+	@python3 -n 5
 {%- else %}
     echo "not implemented"
 {%- endif %}
@@ -138,7 +138,7 @@ lint: lint/pylint lint/flake8{%- if cookiecutter.use_black == 'y' %} lint/black{
 # ----------------------------------------------------------
 # You can set these variables from the command line.
 SPHINXOPTS    =
-SPHINXBUILD   = python -msphinx
+SPHINXBUILD   = @python3 -m sphinx
 SPHINXPROJ    = python-coding-challenge
 SOURCEDIR     = docs
 BUILDDIR      = docs/_build
@@ -173,7 +173,10 @@ clean-doc: ## remove docs artifacts
 # ----------------------------------------------------------
 # Environment Setup
 # ----------------------------------------------------------
-.PHONY: install-testing-requisites
+.PHONY: develop-setup install-testing-requisites
+
+develop-setup: install-testing-requisites ## install module as developer
+	@python3 setup.py develop 
 
 install-testing-requisites: ## install testing requisites
 	@pip install -U -r requirements/base.txt
@@ -188,12 +191,12 @@ release: dist ## package and upload a release
 	twine upload dist/*
 
 dist: clean ## builds source and wheel package
-	python setup.py sdist
-	python setup.py bdist_wheel
+	@python3 setup.py sdist
+	@python3 setup.py bdist_wheel
 	ls -l dist
 
 install: clean ## install the package to the active Python's site-packages
-	python setup.py install
+	@python3 setup.py install
 
 clean-build: ## remove build artifacts
 	rm -fr build/

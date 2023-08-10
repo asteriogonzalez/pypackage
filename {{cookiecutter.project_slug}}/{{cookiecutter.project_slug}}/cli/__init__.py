@@ -22,27 +22,16 @@ if os.environ.get('IGNORE_WINGDEBUG',False):
         print("Remote debugging is not found or configured...")
 {%- endif %}
 
-# import sys
-
-# sys.exit(1)
-
-# basic mycelium support
-#from pycelium.tools.cli.main import *
-
-# from pycelium.tools.cli.config import config
-# from pycelium.tools.cli.run import run
-
-# import local submodules
-# from pycelium.tools.cli.inventory import inventory
-
 # -----------------------------------------------
 # import main cli interface (root)
 # -----------------------------------------------
 
 from .main import *
+from .config import *
+from .workspace import *
 
 # -----------------------------------------------
-# import local submodules
+# import other project submodules/subcommands
 # -----------------------------------------------
 
 # from .inventory import inventory
@@ -54,6 +43,4 @@ from .main import *
 # from .test import test
 # from .users import user
 # from .watch import watch
-# from .workspaces import workspace
-
 

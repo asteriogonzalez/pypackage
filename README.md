@@ -54,7 +54,7 @@ Create a and activate virtual environment
 ```bash
 make create-venv
 source venv/bin/activate
-make install-testing-requisites
+make install-develop
 ```
 
 ## Testing

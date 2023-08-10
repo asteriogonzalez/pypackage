@@ -1,2 +1,5 @@
 {% if cookiecutter.command_line_interface|lower == 'click' -%}
 Click>=7.1.2{% endif %}
+glom
+jmespath
+sphinx-autobuild

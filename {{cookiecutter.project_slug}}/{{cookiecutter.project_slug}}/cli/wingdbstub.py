@@ -1,3 +1,4 @@
+{%- if cookiecutter.use_wingide_remote_debug|lower == 'y' %}
 """ wingdbstub.py -- Start debugging Python programs from outside of Wing
 
 Copyright (c) 1999-2018, Archaeopteryx Software, Inc.  All rights reserved.
@@ -517,3 +518,6 @@ def Ensure(require_connection=1, require_debugger=1):
 
     if require_connection and debugger.ChannelClosed():
         raise ValueError('Not connected')
+{%- else %}
+"""WingIDE remote support disabled"""
+{%- endif %}
